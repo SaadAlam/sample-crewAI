@@ -1,0 +1,17 @@
+version: 1.0
+name: your-app-name  # Replace with a descriptive name for your service
+runtime: python
+build:
+  build-command: build  # Or 'true', as discussed
+  build-directory: ./  # Important: Set to the root of your repository if your buildspec.yaml is there
+  buildspec:
+    version: 1.0
+    runtime: python
+    build:
+      commands:
+        - yum update -y
+        - yum install -y gcc make libpq-dev python3 python3-pip
+        - pip install -r requirements.txt --no-cache-dir
+run:
+  port: 8080 # Or the port your app listens on. If you're using the console for Start command, you can omit this
+  # command: gunicorn --bind :8080 your_app:app # If you're not using the console for the start command, uncomment and adjust.
