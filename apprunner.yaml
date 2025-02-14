@@ -1,16 +1,18 @@
 version: 1.0
-runtime: 3.11  # Or your desired supported Python version
+
+# Runtime configuration
+runtime: python3.11  # Choose your Python version here
+
+# Build commands
 build:
-  build-command: build  # Or 'true', as discussed
-  build-directory: ./  # Important: Set to the root of your repository if your buildspec.yaml is there
-  buildspec:
-    version: 1.0
-    runtime: python
-    build:
-      commands:
-        - yum update -y
-        - yum install -y gcc make libpq-dev python3 python3-pip
-        - pip install -r requirements.txt --no-cache-dir
-run:
-  port: 8080 # Or the port your app listens on. If you're using the console for Start command, you can omit this
-  # command: gunicorn --bind :8080 your_app:app # If you're not using the console for the start command, uncomment and adjust.
+  commands:
+    - python3 -m pip install --upgrade pip
+    - python3 -m pip install -r requirements.txt
+
+# Start command
+start:
+  command: "python3 hello.py"  # Replace with your main Python file name
+
+
+# Optional: Port configuration
+port: 8000  # You can choose the port if your application listens on a specific port
