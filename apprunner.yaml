@@ -1,6 +1,5 @@
 version: 1.0
-name: your-app-name  # Replace with a descriptive name for your service
-runtime: python311  # Or your desired supported Python version
+runtime: 3.11  # Or your desired supported Python version
 build:
   build-command: build  # Or 'true', as discussed
   build-directory: ./  # Important: Set to the root of your repository if your buildspec.yaml is there
